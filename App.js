@@ -15,6 +15,7 @@ import { createStore } from 'redux';
 import reducers from './src/reducers';
 
 import HeaderTitle  from './src/components/common/HeaderTitle';
+import LibraryList from './src/components/LibraryList';
 
 
 const instructions = Platform.select({
@@ -31,6 +32,7 @@ export default class App extends Component<Props> {
       <Provider store={createStore(reducers)}>
       <View>
       <HeaderTitle headerText='Tech Stack'/>
+      <LibraryList/>
       </View>
       </Provider>
     );
