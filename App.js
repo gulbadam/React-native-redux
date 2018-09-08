@@ -14,10 +14,11 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './src/reducers';
 
-import HeaderTitle  from './src/components/common/HeaderTitle';
+import {Header}  from './src/components/common/Header';
 import LibraryList from './src/components/LibraryList';
 
-
+const store = createStore(reducers);
+console.log(store.getState())
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -26,12 +27,12 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component<Props>{
   render() {
     return (
-      <Provider store={createStore(reducers)}>
-      <View>
-      <HeaderTitle headerText='Tech Stack'/>
+      <Provider store={store}>
+      <View style={{flex: 1}}>
+      <Header headerText='Tech Stack'/>
       <LibraryList/>
       </View>
       </Provider>
@@ -39,21 +40,4 @@ export default class App extends Component<Props> {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+
